@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Hardware Deployment Support - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            width: 300px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .flag {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #1f2937;
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #374151;
+            margin-bottom: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .back-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .faq-answer {
+            padding: 10px;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>Loading...</h1>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script starting...');
+        
+        let currentPage = 'landing';
+        let expandedFAQ = null;
+        
+        function showPage(page) {
+            currentPage = page;
+            render();
+        }
+        
+        function render() {
+            const app = document.getElementById('app');
+            console.log('Rendering page:', currentPage);
+            
+            if (currentPage === 'landing') {
+                app.innerHTML = `
+                    <div class="container">
+                        <h1>POS Hardware Deployment Support</h1>
+                        <div class="card" onclick="showPage('usa')">
+                            <div class="flag">🇺🇸</div>
+                            <h2>United States</h2>
+                            <p>North American Operations Hub</p>
+                        </div>
+                        <div class="card" onclick="showPage('canada')">
+                            <div class="flag">🇨🇦</div>
+                            <h2>Canada</h2>
+                            <p>Canadian Operations Hub</p>
+                        </div>
+                    </div>
+                `;
+            } else if (currentPage === 'usa') {
+                app.innerHTML = `
+                    <div class="container">
+                        <button class="back-btn" onclick="showPage('landing')">← Back</button>
+                        <h1>🇺🇸 US Hardware Deployment</h1>
+                        <div class="service-grid">
+                            <div class="service-card" onclick="showPage('orders-operations')">
+                                <h3>Orders and Operations</h3>
+                                <p>Manage POS hardware orders, deployment schedules, and operational workflows</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Product and Supply</h3>
+                                <p>POS terminal inventory, supply chain management, and product specifications</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Procedures and Guidelines</h3>
+                                <p>Deployment procedures, installation guidelines, and compliance documentation</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Service Standards</h3>
+                                <p>Service level agreements, operational hours, and performance standards</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Orders Tracking</h3>
+                                <p>Real-time tracking of POS deployment orders and installation progress</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Contacts</h3>
+                                <p>Technical support contacts, regional teams, and escalation procedures</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Service Standards</h3>
+                                <p>Service level agreements, operational hours, and performance standards</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Orders Tracking</h3>
+                                <p>Real-time tracking of POS deployment orders and installation progress</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Contacts</h3>
+                                <p>Technical support contacts, regional teams, and escalation procedures</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (currentPage === 'canada') {
+                app.innerHTML = `
+                    <div class="container">
+                        <button class="back-btn" onclick="showPage('landing')">← Back</button>
+                        <h1>🇨🇦 Canada Hardware Deployment</h1>
+                        <div class="service-grid">
+                            <div class="service-card">
+                                <h3>Orders and Operations</h3>
+                                <p>Manage POS hardware orders, deployment schedules, and operational workflows</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Product and Supply</h3>
+                                <p>POS terminal inventory, supply chain management, and product specifications</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Procedures and Guidelines</h3>
+                                <p>Deployment procedures, installation guidelines, and compliance documentation</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Service Standards</h3>
+                                <p>Service level agreements, operational hours, and performance standards</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Orders Tracking</h3>
+                                <p>Real-time tracking of POS deployment orders and installation progress</p>
+                            </div>
+                            <div class="service-card">
+                                <h3>Contacts</h3>
+                                <p>Technical support contacts, regional teams, and escalation procedures</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (currentPage === 'orders-operations') {
+                app.innerHTML = `
+                    <div class="container">
+                        <button class="back-btn" onclick="showPage('usa')">← Back to US</button>
+                        <h1>Orders and Operations</h1>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(1)">
+                                What do I do if the merchant order is missing items?
+                            </div>
+                            <div id="faq-1" class="faq-answer" style="display: ${expandedFAQ === 1 ? 'block' : 'none'}">
+                                <p><strong>If a merchant order is missing items, follow these steps:</strong></p>
+                                <p><strong>1. Verify the Order:</strong> Check the original order confirmation and packing slip to confirm what items should have been included.</p>
+                                <p><strong>2. Document the Issue:</strong> Take photos of the received items and packaging. Note the tracking number and delivery date.</p>
+                                <p><strong>3. Contact Support Immediately:</strong> Call our 24/7 support line at +1 (800) POS-HELP or email deploy-us@postech.com with:</p>
+                                <ul>
+                                    <li>Order number</li>
+                                    <li>Missing item details</li>
+                                    <li>Photos of received items</li>
+                                    <li>Merchant contact information</li>
+                                </ul>
+                                <p><strong>4. Expedite Replacement:</strong> We will immediately ship the missing items via overnight delivery at no additional cost.</p>
+                                <p><strong>5. Update Merchant:</strong> Inform the merchant of the situation and provide them with the new tracking information for the replacement items.</p>
+                                <p><strong>6. Follow Up:</strong> Ensure the merchant receives the missing items and confirm the installation can proceed as scheduled.</p>
+                                <p><strong>Important:</strong> Do not proceed with installation until all required items are present, as this may cause delays and additional service calls.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        function toggleFAQ(id) {
+            expandedFAQ = expandedFAQ === id ? null : id;
+            render();
+        }
+        
+        // Initialize
+        console.log('Initializing app...');
+        render();
+    </script>
+</body>
+</html>
